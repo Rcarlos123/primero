@@ -1,8 +1,9 @@
 
 from flask import Flask
-from flask_cors import CORS
+
+
 from modelo.modeloProducto import modeloProducto
-from config import config
+
 
 app = Flask(__name__)	
 
@@ -41,13 +42,10 @@ def actulalizar_productos(codigo):
 @app.route('/productos/contarproductos',methods=['GET'])
 def contar_productos():
       prod=modeloProducto.contar_producto()
-      return prod 
+      return prod
 
-def pagina_no_encontrada(error):
-    return "<h1>Página no encontrada</h1>", 404
+
 
 if __name__ == '__main__':
     
-    app.config.from_object(config['development'])
-    app.register_error_handler(404, pagina_no_encontrada)
-    app.run(host='0.0.0.0')
+                 app.run(debug=True,host='0.0.0.0')
