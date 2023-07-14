@@ -44,4 +44,7 @@ def contar_productos():
 
 
 if __name__ == '__main__':
-   		app.run(debug=True,host='0.0.0.0')
+         
+   	     app.config.from_object(config['development'])
+         app.register_error_handler(404, pagina_no_encontrada)
+         app.run(host='0.0.0.0')
